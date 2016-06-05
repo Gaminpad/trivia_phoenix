@@ -18,6 +18,7 @@
           <ul class="nav nav-pills pull-right user-menu">
             <%= if logged_in?(@conn) do %>
               <li><%= current_user(@conn).username %></li>
+              <li class="menu-item"><%= link "Chatrooms", to: chatroom_path(@conn, :index) %></li>
               <li class="menu-item"><%= link "Logout", to: session_path(@conn, :delete), method: :delete %></li>
             <% else %>
               <li><%= link "Login",    to: session_path(@conn, :new) %></li>

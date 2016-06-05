@@ -1,0 +1,33 @@
+<h2>Show chatroom</h2>
+
+<ul>
+
+  <li>
+    <strong>Createdby:</strong>
+    <%= @chatroom.createdby_id %>
+  </li>
+
+  <li>
+    <strong>Url:</strong>
+    <%= @chatroom.url %>
+  </li>
+
+  <li>
+    <strong>Topic:</strong>
+    <%= @chatroom.topic %>
+  </li>
+
+  <li>
+    <strong>Private:</strong>
+    <%= @chatroom.private %>
+  </li>
+
+  <li>
+    <strong>Crypted password:</strong>
+    <%= @chatroom.crypted_password %>
+  </li>
+
+</ul>
+
+<%= link "Edit", to: chatroom_path(@conn, :edit, @chatroom) %>
+<%= link "Back", to: chatroom_path(@conn, :index) %>

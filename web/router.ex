@@ -16,6 +16,7 @@ defmodule TriviaPhoenix.Router do
     post   "/login",  SessionController, :create
     delete "/logout", SessionController, :delete
     resources "/users", UserController, only: [:new, :create]
+    resources "/chatroom", ChatroomController
   end
 
 

@@ -15,7 +15,7 @@ defmodule TriviaPhoenix.SessionController do
         |> redirect(to: "/")
       :error ->
         conn
-        |> put_flash(:info, "Invalid login credentials")
+        |> put_flash(:error, "Invalid login credentials")
         |> render("new.html")
     end
   end
