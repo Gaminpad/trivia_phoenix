@@ -1,30 +1,24 @@
 defmodule TriviaPhoenix.SessionController do
-
   use TriviaPhoenix.Web, :controller
 
-  def new(conn, _params) do
+  def new(conn, _) do
     render conn, "new.html"
   end
-
-  def create(conn, %{"session" => session_params}) do
-    case TriviaPhoenix.Session.login(session_params, TriviaPhoenix.Repo) do
-      {:ok, user} ->
+  def create(conn, %{"session" => %{"username" => user, "password" => pass}}) do
+    case TriviaPhoenix.Auth.login_by_username_and_pass(conn, user, pass, repo: Repo) do
+      {:ok, conn} ->
         conn
-        |> put_session(:current_user, user.id)
-        |> put_flash(:info, "Logged in successfully")
-        |> redirect(to: "/")
-      :error ->
+        |> put_flash(:info, "Wellcome back!!")
+        |> redirect(to: page_path(conn, :index))
+      {:error, _reason, conn} ->
         conn
-        |> put_flash(:error, "Invalid login credentials")
+        |> put_flash(:error, "Invalid username/password conbination")
         |> render("new.html")
     end
   end
-
-  def delete(conn, _) do
+  def delete(conn, params) do
     conn
-    |> delete_session(:current_user)
-    |> put_flash(:info, "Logged out")
-    |> redirect(to: "/")
+    |> TriviaPhoenix.Auth.logout()
+    |> redirect(to: page_path(conn, :index))
   end
-
 end

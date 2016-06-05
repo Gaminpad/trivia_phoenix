@@ -8,6 +8,7 @@ defmodule TriviaPhoenix.User do
     field :crypted_password, :string
     field :password, :string, virtual: true
     field :email, :string
+    has_many :chatrooms, TriviaPhoenix.Chatroom
     timestamps
   end
 
@@ -20,11 +21,6 @@ defmodule TriviaPhoenix.User do
     |> repo.insert()
   end
 
-  defp hashed_password(password) do
-    hashed_pass = Comeonin.Bcrypt.hashpwsalt(password)
-    IO.puts("hashed_pass: #{hashed_pass}")
-    hashed_pass
-  end
 
   @doc """
   Creates a changeset based on the `model` and `params`.
@@ -39,4 +35,9 @@ defmodule TriviaPhoenix.User do
     |> unique_constraint(:email)
   end
 
+  defp hashed_password(password) do
+    hashed_pass = Comeonin.Bcrypt.hashpwsalt(password)
+    IO.puts("hashed_pass: #{hashed_pass}")
+    hashed_pass
+  end
 end

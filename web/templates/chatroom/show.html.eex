@@ -3,8 +3,8 @@
 <ul>
 
   <li>
-    <strong>Createdby:</strong>
-    <%= @chatroom.createdby_id %>
+    <strong>User:</strong>
+    <%= @chatroom.user_id %>
   </li>
 
   <li>
@@ -23,8 +23,13 @@
   </li>
 
   <li>
-    <strong>Crypted password:</strong>
-    <%= @chatroom.crypted_password %>
+    <strong>Encrypt password:</strong>
+    <%= @chatroom.encrypt_password %>
+  </li>
+
+  <li>
+    <strong>Description:</strong>
+    <%= @chatroom.description %>
   </li>
 
 </ul>
