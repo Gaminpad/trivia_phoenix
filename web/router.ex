@@ -1,5 +1,6 @@
 defmodule TriviaPhoenix.Router do
   use TriviaPhoenix.Web, :router
+  use Honeybadger.Plug
 
   pipeline :browser do
     plug :accepts, ["html"]
@@ -16,6 +17,7 @@ defmodule TriviaPhoenix.Router do
     post   "/login",  SessionController, :create
     delete "/logout", SessionController, :delete
     resources "/users", UserController, only: [:new, :create]
+    resources "/rooms", RoomController, only: [:new, :create, :show]
   end
 
 

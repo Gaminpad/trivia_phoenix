@@ -8,6 +8,7 @@ defmodule TriviaPhoenix.User do
     field :crypted_password, :string
     field :password, :string, virtual: true
     field :email, :string
+    has_many :permissions, Permission
     timestamps
   end
 

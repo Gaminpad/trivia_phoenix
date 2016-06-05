@@ -18,7 +18,7 @@ defmodule TriviaPhoenix.Mixfile do
   # Type `mix help compile.app` for more information.
   def application do
     [mod: {TriviaPhoenix, []},
-     applications: [:phoenix, :phoenix_html, :cowboy, :logger, :gettext,
+     applications: [:phoenix, :phoenix_html, :cowboy, :honeybadger, :logger, :gettext,
                     :phoenix_ecto, :postgrex]]
   end
 
@@ -37,7 +37,8 @@ defmodule TriviaPhoenix.Mixfile do
      {:phoenix_live_reload, "~> 1.0", only: :dev},
      {:gettext, "~> 0.9"},
      {:cowboy, "~> 1.0"},
-     {:comeonin, "~> 1.0"}
+     {:comeonin, "~> 1.0"},
+     {:honeybadger, "~> 0.1"}
     ]
   end
 

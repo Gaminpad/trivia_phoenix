@@ -20,7 +20,7 @@
               <li><%= current_user(@conn).username %></li>
               <li class="menu-item"><%= link "Logout", to: session_path(@conn, :delete), method: :delete %></li>
             <% else %>
-              <li><%= link "Login",    to: session_path(@conn, :new) %></li>
+              <li><%= link "Login",   to: session_path(@conn, :new) %></li>
               <li><%= link "Sign Up", to: user_path(@conn, :new) %></li>
             <% end %>
           </ul>

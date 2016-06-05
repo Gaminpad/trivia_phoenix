@@ -27,3 +27,8 @@ import_config "#{Mix.env}.exs"
 config :phoenix, :generators,
   migration: true,
   binary_id: false
+
+# Honeybadger
+config :honeybadger,
+  environment_name: :dev,
+  api_key: "ec4c9644"
