@@ -3,11 +3,12 @@
 <table class="table">
   <thead>
     <tr>
-      <th>Createdby</th>
+      <th>User</th>
       <th>Url</th>
       <th>Topic</th>
       <th>Private</th>
-      <th>Crypted password</th>
+      <th>Encrypt password</th>
+      <th>Description</th>
 
       <th></th>
     </tr>
@@ -15,16 +16,17 @@
   <tbody>
 <%= for chatroom <- @chatrooms do %>
     <tr>
-      <td><%= chatroom.createdby_id %></td>
+      <td><%= chatroom.user_id %></td>
       <td><%= chatroom.url %></td>
       <td><%= chatroom.topic %></td>
       <td><%= chatroom.private %></td>
-      <td><%= chatroom.crypted_password %></td>
+      <td><%= chatroom.encrypt_password %></td>
+      <td><%= chatroom.description %></td>
 
       <td class="text-right">
-        <%= link "Show", to: chatroom_path(@conn, :show, chatroom), class: "btn btn-default btn-xs" %>
-        <%= link "Edit", to: chatroom_path(@conn, :edit, chatroom), class: "btn btn-default btn-xs" %>
-        <%= link "Delete", to: chatroom_path(@conn, :delete, chatroom), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs" %>
+        <%= link "", to: chatroom_path(@conn, :show, chatroom), data: [toggle: "tooltip"], class: "btn btn-default btn-xs fa fa-eye",  title: "Show" %>
+        <%= link "", to: chatroom_path(@conn, :edit, chatroom), data: [toggle: "tooltip"], class: "btn btn-default btn-xs fa fa-pencil", title: "Edit" %>
+        <%= link "", to: chatroom_path(@conn, :delete, chatroom), method: :delete, data: [confirm: "Are you sure?", toggle: "tooltip"], class: "btn btn-danger btn-xs fa fa-times", title: "Remove" %>
       </td>
     </tr>
 <% end %>

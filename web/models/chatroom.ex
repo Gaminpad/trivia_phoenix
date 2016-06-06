@@ -5,14 +5,15 @@ defmodule TriviaPhoenix.Room do
     field :url, :string
     field :topic, :string
     field :private, :boolean, default: false
-    field :crypted_password, :string
-    belongs_to :createdby, TriviaPhoenix.Createdby
+    field :encrypt_password, :string
+    field :description, :string
+    belongs_to :user, TriviaPhoenix.User
 
     timestamps
   end
 
-  @required_fields ~w(url topic private crypted_password)
-  @optional_fields ~w()
+  @required_fields ~w(url topic private description)
+  @optional_fields ~w(encrypt_password)
 
   @doc """
   Creates a changeset based on the `model` and `params`.
@@ -23,5 +24,12 @@ defmodule TriviaPhoenix.Room do
   def changeset(model, params \\ :empty) do
     model
     |> cast(params, @required_fields, @optional_fields)
+    |> unique_constraint(:url)
+  end
+
+  defp hashed_password(password) do
+    hashed_pass = Comeonin.Bcrypt.hashpwsalt(password)
+    IO.puts("hashed_pass: #{hashed_pass}")
+    hashed_pass
   end
 end

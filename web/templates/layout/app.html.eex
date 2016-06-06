@@ -9,6 +9,11 @@
 
     <title>Hello TriviaPhoenix!</title>
     <link rel="stylesheet" href="<%= static_path(@conn, "/css/app.css") %>">
+    <link rel="stylesheet" href="<%= static_path(@conn, "/css/trivianet.css") %>">
+    <script src="https://use.fontawesome.com/4da2a17f08.js"></script>
+
+    <script   src="https://code.jquery.com/jquery-2.2.4.min.js"   integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="   crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
   </head>
 
   <body>
@@ -16,9 +21,9 @@
       <header class="header">
         <nav role="navigation">
           <ul class="nav nav-pills pull-right user-menu">
-            <%= if logged_in?(@conn) do %>
-              <li><%= current_user(@conn).username %></li>
-              <li class="menu-item"><%= link "Rooms", to: chatroom_path(@conn, :index) %></li>
+            <%= if @current_user do %>
+              <li><%= @current_user.username %></li>
+              <li class="menu-item"><%= link "Chatrooms", to: chatroom_path(@conn, :index) %></li>
               <li class="menu-item"><%= link "Logout", to: session_path(@conn, :delete), method: :delete %></li>
             <% else %>
               <li><%= link "Login",   to: session_path(@conn, :new) %></li>
@@ -38,5 +43,6 @@
 
     </div> <!-- /container -->
     <script src="<%= static_path(@conn, "/js/app.js") %>"></script>
+    <script src="<%= static_path(@conn, "/js/trivialnet.js") %>"></script>
   </body>
 </html>

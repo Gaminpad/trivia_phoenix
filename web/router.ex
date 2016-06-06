@@ -8,6 +8,7 @@ defmodule TriviaPhoenix.Router do
     plug :fetch_flash
     plug :protect_from_forgery
     plug :put_secure_browser_headers
+    plug TriviaPhoenix.Auth, repo: TriviaPhoenix.Repo
   end
 
   scope "/", TriviaPhoenix do

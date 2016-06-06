@@ -6,12 +6,14 @@ defmodule TriviaPhoenix.Repo.Migrations.CreateRoom do
       add :url, :string
       add :topic, :string
       add :private, :boolean, default: false
-      add :crypted_password, :string
-      add :createdby_id, references(:users, on_delete: :nothing)
+      add :encrypt_password, :string
+      add :description, :text
+      add :user_id, references(:users, on_delete: :nothing)
 
       timestamps
     end
-    create index(:chatrooms, [:createdby_id])
+    create index(:chatrooms, [:user_id])
+    create unique_index(:chatrooms, [:url])
 
   end
 end

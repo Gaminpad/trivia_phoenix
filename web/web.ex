@@ -36,6 +36,10 @@ defmodule TriviaPhoenix.Web do
 
       import TriviaPhoenix.Router.Helpers
       import TriviaPhoenix.Gettext
+
+      #Importación para poder controlar que los usuarios están logueados, requisito indispensable para acceder a ciertos recuros.
+      #Poniéndolo aquí nos ahorramos duplicidad de código al no tener que reescribirlo en cada controlador que queramos que actúe.
+      import TriviaPhoenix.Auth, only: [authenticate_user: 2]
     end
   end
 
@@ -61,6 +65,10 @@ defmodule TriviaPhoenix.Web do
   def router do
     quote do
       use Phoenix.Router
+
+      #Importación para poder controlar que los usuarios están logueados, requisito indispensable para acceder a ciertos recuros.
+      #Poniéndolo aquí nos ahorramos duplicidad de código al no tener que reescribirlo en cada controlador que queramos que actúe.
+      import TriviaPhoenix.Auth, only: [authenticate_user: 2]
     end
   end
 

@@ -3,7 +3,7 @@ defmodule TriviaPhoenix.RoomTest do
 
   alias TriviaPhoenix.Room
 
-  @valid_attrs %{crypted_password: "some content", private: true, topic: "some content", url: "some content"}
+  @valid_attrs %{description: "some content", encrypt_password: "some content", private: true, topic: "some content", url: "some content"}
   @invalid_attrs %{}
 
   test "changeset with valid attributes" do

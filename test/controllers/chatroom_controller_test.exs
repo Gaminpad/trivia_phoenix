@@ -1,8 +1,8 @@
 defmodule TriviaPhoenix.RoomControllerTest do
   use TriviaPhoenix.ConnCase
 
-  alias TriviaPhoenix.Room
-  @valid_attrs %{crypted_password: "some content", private: true, topic: "some content", url: "some content"}
+  alias TriviaPhoenix.Chatroom
+  @valid_attrs %{description: "some content", encrypt_password: "some content", private: true, topic: "some content", url: "some content"}
   @invalid_attrs %{}
 
   test "lists all entries on index", %{conn: conn} do
